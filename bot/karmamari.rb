@@ -75,8 +75,7 @@ class Karmamari < SlackRubyBot::Bot
     client.say text: "Set #{karma} to #{quip}", channel: data.channel
   end
 
-  # Negative lookahead: "If I liked C that much I wouldn't be using C++"
-  match(/(?!c|C)(\w+)(\+\+|--)/) do |client, data, match|
+  match(/(\w+)(\+\+|--)/) do |client, data, match|
     @config ||= KarmamariConfig.new
     @users = client.web_client.users_list['members']
 
